@@ -43,15 +43,15 @@ public class AluguelDeServiço {
 	
 	public void processoDeFatura(AluguelDeCarro aluguelDeCarro) {
 		double minutos = Duration.between(aluguelDeCarro.getDataInicio(), aluguelDeCarro.getDataFim()).toMinutes();
-		double horas = minutos/60;
+		double horas = minutos/60.00;
 		
-		double pagamentoBasico = 0.0;
+		double pagamentoBasico;
 		
-		if(horas <=12) {
+		if(horas <=12.00) {
 			pagamentoBasico = precoPorHora * Math.ceil(horas);
 		}
 		else {
-			pagamentoBasico = precoPorDia * Math.ceil(horas/24);
+			pagamentoBasico = precoPorDia * Math.ceil(horas/24.00);
 		}
 		
 		double taxa = servicoDeImposto.taxa(pagamentoBasico);
